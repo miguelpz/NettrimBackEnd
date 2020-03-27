@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NettrimCh.Api.Application.Contracts\NettrimCh.Api.Application.Contracts.csproj" />
+    <ProjectReference Include="..\NettrimCh.Api.Domain\NettrimCh.Api.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

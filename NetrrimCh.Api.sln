@@ -1,0 +1,80 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29920.165
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NettrimCh.Api", "NetrrimCh.Api\NettrimCh.Api.csproj", "{8B1BE5E5-368F-4D7D-A5CD-127F61294DC1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.1 Distributed Services", "1.1 Distributed Services", "{182E4CB5-5535-4E63-8C63-96B329BDFA50}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.2 Application", "1.2 Application", "{88818A33-D4E9-483D-8A59-64A2E6691470}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NettrimCh.Api.Application.Contracts", "NettrimCh.Api.Application.Contracts\NettrimCh.Api.Application.Contracts.csproj", "{C45B0525-30D4-4D81-8349-A0C19EF852AD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NettrimCh.Api.Application", "NettrimCh.Api.Application\NettrimCh.Api.Application.csproj", "{A9697417-850B-4E61-B5F3-4BE77F90AC28}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.3. Domain", "1.3. Domain", "{712930A3-8633-4002-A6DE-70509781544D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NettrimCh.Api.Domain", "NettrimCh.Api.Domain\NettrimCh.Api.Domain.csproj", "{CA21F4B5-E576-4D44-AC5B-75637CBF706F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.4. Data Access", "1.4. Data Access", "{F3D49121-FF7D-4368-9A55-C88ECD39ECD3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NettrimCh.Api.DataAccess", "NettrimCh.Api.DataAccess\NettrimCh.Api.DataAccess.csproj", "{A4D15B46-E0B7-486D-BC3C-142583F73A2E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NettrimCh.Api.DataAccess.Contracts", "NettrimCh.Api.DataAccess.Contracts\NettrimCh.Api.DataAccess.Contracts.csproj", "{6F7BB5D7-020D-4AE2-A35C-7EB4EC58A7E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.5 Cross Cutting", "1.5 Cross Cutting", "{5039692A-22EE-4FCC-ADA0-C8C9E79B34B8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NettrimCh.Api.CrossCutting", "NettrimCh.Api.CrossCutting\NettrimCh.Api.CrossCutting.csproj", "{7916267C-03D2-4160-A768-50279C817854}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B1BE5E5-368F-4D7D-A5CD-127F61294DC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B1BE5E5-368F-4D7D-A5CD-127F61294DC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B1BE5E5-368F-4D7D-A5CD-127F61294DC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B1BE5E5-368F-4D7D-A5CD-127F61294DC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C45B0525-30D4-4D81-8349-A0C19EF852AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C45B0525-30D4-4D81-8349-A0C19EF852AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C45B0525-30D4-4D81-8349-A0C19EF852AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C45B0525-30D4-4D81-8349-A0C19EF852AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9697417-850B-4E61-B5F3-4BE77F90AC28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9697417-850B-4E61-B5F3-4BE77F90AC28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9697417-850B-4E61-B5F3-4BE77F90AC28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9697417-850B-4E61-B5F3-4BE77F90AC28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA21F4B5-E576-4D44-AC5B-75637CBF706F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA21F4B5-E576-4D44-AC5B-75637CBF706F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA21F4B5-E576-4D44-AC5B-75637CBF706F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA21F4B5-E576-4D44-AC5B-75637CBF706F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4D15B46-E0B7-486D-BC3C-142583F73A2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4D15B46-E0B7-486D-BC3C-142583F73A2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4D15B46-E0B7-486D-BC3C-142583F73A2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4D15B46-E0B7-486D-BC3C-142583F73A2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F7BB5D7-020D-4AE2-A35C-7EB4EC58A7E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F7BB5D7-020D-4AE2-A35C-7EB4EC58A7E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F7BB5D7-020D-4AE2-A35C-7EB4EC58A7E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F7BB5D7-020D-4AE2-A35C-7EB4EC58A7E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7916267C-03D2-4160-A768-50279C817854}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7916267C-03D2-4160-A768-50279C817854}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7916267C-03D2-4160-A768-50279C817854}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7916267C-03D2-4160-A768-50279C817854}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8B1BE5E5-368F-4D7D-A5CD-127F61294DC1} = {182E4CB5-5535-4E63-8C63-96B329BDFA50}
+		{C45B0525-30D4-4D81-8349-A0C19EF852AD} = {88818A33-D4E9-483D-8A59-64A2E6691470}
+		{A9697417-850B-4E61-B5F3-4BE77F90AC28} = {88818A33-D4E9-483D-8A59-64A2E6691470}
+		{CA21F4B5-E576-4D44-AC5B-75637CBF706F} = {712930A3-8633-4002-A6DE-70509781544D}
+		{A4D15B46-E0B7-486D-BC3C-142583F73A2E} = {F3D49121-FF7D-4368-9A55-C88ECD39ECD3}
+		{6F7BB5D7-020D-4AE2-A35C-7EB4EC58A7E3} = {F3D49121-FF7D-4368-9A55-C88ECD39ECD3}
+		{7916267C-03D2-4160-A768-50279C817854} = {5039692A-22EE-4FCC-ADA0-C8C9E79B34B8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5953E368-1719-43BC-A567-7A41336E3012}
+	EndGlobalSection
+EndGlobal
