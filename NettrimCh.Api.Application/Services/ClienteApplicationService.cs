@@ -19,8 +19,13 @@ namespace NettrimCh.Api.Application.Services
 
         public IEnumerable<ClienteDto> GetAll()
         {
-            return _clienteDomainService.GetAll().toEntity();
+            return _clienteDomainService.GetAll().toDto();
 
+        }
+
+        public bool Update(int id, ClienteDto cliente)
+        {
+            return _clienteDomainService.Update(id, cliente.toEntity());
         }
     }
 }

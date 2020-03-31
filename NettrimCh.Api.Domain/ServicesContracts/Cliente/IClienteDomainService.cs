@@ -8,5 +8,6 @@ namespace NettrimCh.Api.Domain.ServicesContracts.Cliente
     public interface IClienteDomainService
     {
         IEnumerable<ClienteEntity> GetAll();
+        bool Update(int id, ClienteEntity clienteEntity);
     }
 }

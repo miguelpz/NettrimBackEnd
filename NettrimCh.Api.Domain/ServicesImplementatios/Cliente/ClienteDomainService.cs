@@ -22,5 +22,18 @@ namespace NettrimCh.Api.Domain.Services.Cliente
             var clientList = _clienteRepository.GetAll().Result;
             return clientList.toEntity();                        
         }
+
+        public bool Update(int id, ClienteEntity clienteEntity)
+        {
+            try
+            {
+                return _clienteRepository.Update(id, clienteEntity.toModel()).Result;
+            } 
+            catch 
+            {
+                return false;
+            }
+        }
     }
+    
 }

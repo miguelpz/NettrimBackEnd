@@ -42,8 +42,10 @@ namespace NettrimCh.Api.Controllers
 
         // PUT: api/Clientes/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public bool Put( int id, [FromBody] ClienteDto cliente)
         {
+            return _clienteApplicationSerice.Update(id, cliente);
+
         }
 
         // DELETE: api/ApiWithActions/5

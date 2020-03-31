@@ -10,7 +10,7 @@ namespace NettrimCh.Api.DataAccess.Contracts.Repositories.GenericRepository
         Task<IEnumerable<T>> GetAll();
         Task<T> GetById(object id);
         Task Add(T entity);
-        Task Update(T entity);
+        Task<bool> Update(int id, T obj);
         Task Delete(object id);
         Task Save();
     }
