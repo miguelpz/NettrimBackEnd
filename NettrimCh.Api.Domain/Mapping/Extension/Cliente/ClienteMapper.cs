@@ -19,9 +19,9 @@ namespace NettrimCh.Api.Domain.Mapping.Extension.Cliente
                 .CreateMapper();
         }
 
-        public static IEnumerable<Entities.ClienteEntity> toEntity(this IEnumerable<Models.ClienteModel> model)
+        public static IEnumerable<Entities.ClienteEntity> toEntity(this IEnumerable<Models.Cliente> model)
         {
-            return model == null ? null : Mapper.Map<IEnumerable<Models.ClienteModel>, IEnumerable<Entities.ClienteEntity>>(model);
+            return model == null ? null : Mapper.Map<IEnumerable<Models.Cliente>, IEnumerable<Entities.ClienteEntity>>(model);
         }
     }
 }

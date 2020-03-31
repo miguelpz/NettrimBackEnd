@@ -27,6 +27,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.5 Cross Cutting", "1.5 Cr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NettrimCh.Api.CrossCutting", "NettrimCh.Api.CrossCutting\NettrimCh.Api.CrossCutting.csproj", "{7916267C-03D2-4160-A768-50279C817854}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{714ED9EE-3AED-489F-AC5B-D7AF66E8823C}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.txt = Readme.txt
+		..\..\..\Documents\script.sql = ..\..\..\Documents\script.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

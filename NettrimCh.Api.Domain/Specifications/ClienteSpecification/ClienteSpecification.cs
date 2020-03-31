@@ -16,7 +16,7 @@ namespace NettrimCh.Api.Domain.Specifications.ClienteSpecification
 
         public bool IsSatisfiedBy(ClienteEntity cliente)
         {
-            return (_stringSpecification.IsSatisfiedBy(cliente.Cliente) && _stringSpecification.IsSatisfiedBy(cliente.Dirección)
+            return (_stringSpecification.IsSatisfiedBy(cliente.Nombre) && _stringSpecification.IsSatisfiedBy(cliente.Direccion)
                 && _stringSpecification.IsSatisfiedBy(cliente.Responsable) && _stringSpecification.IsSatisfiedBy(cliente.Telefono));
                 
         }

@@ -1,0 +1,1 @@
+Antes de lanzar el script crear base de datos NettrimDb

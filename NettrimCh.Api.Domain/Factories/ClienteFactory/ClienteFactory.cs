@@ -23,7 +23,7 @@ namespace NettrimCh.Api.Domain.Factories.ClienteFactory
                 {
                     return c;
                 }
-                throw new ImposibleCrearClienteException("No se ha podido crear el cliente: " + c.Cliente + ", porque hay datos incorrectos.");
+                throw new ImposibleCrearClienteException("No se ha podido crear el cliente: " + c.Nombre + ", porque hay datos incorrectos.");
             }
             throw new ImposibleCrearClienteException("No se ha podido crear el cliente porque es nulo.");            
         }

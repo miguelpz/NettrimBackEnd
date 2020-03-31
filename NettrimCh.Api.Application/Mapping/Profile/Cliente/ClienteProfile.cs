@@ -11,12 +11,9 @@ namespace  NettrimCh.Api.Application.Mapping.Profile.Cliente
     {
         public ClienteProfile()
         {
-           
+
             CreateMap<Entities.ClienteEntity, Dtos.ClienteDto>()
-                .ForMember(
-                    dest => dest.Nombre,
-                    opt => opt.MapFrom(src => src.Cliente)
-                );                           
+                .ReverseMap();
         }
     }
 }

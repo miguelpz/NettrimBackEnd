@@ -1,16 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using NettrimCh.Api.DataAccess.Contracts.Models;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.GenericRepository;
-using NettrimCh.Api.DataAccess.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace NettrimCh.Api.DataAccess.Repositories.GenericRepository
 {
     public abstract class GenericRepository<T>: IGenericRepository<T> where T : class
     {
-        public NettrimChContext _context;
+        public NettrimDbContext _context;
         public DbSet<T> _table;
 
         public virtual async Task<IEnumerable<T>> GetAll()
