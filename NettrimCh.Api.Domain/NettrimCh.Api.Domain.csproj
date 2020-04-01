@@ -12,9 +12,4 @@
     <ProjectReference Include="..\NettrimCh.Api.DataAccess\NettrimCh.Api.DataAccess.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Specifications\EmpleadoSpecification\" />
-    <Folder Include="Specifications\TareaSpecification\" />
-  </ItemGroup>
-
 </Project>

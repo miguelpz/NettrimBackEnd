@@ -1,4 +1,6 @@
-﻿namespace NettrimCh.Api.Domain.Specifications.ProyectoSpecification
+﻿using NettrimCh.Api.Domain.Entities;
+
+namespace NettrimCh.Api.Domain.Specifications.ProyectoSpecification
 {
     public interface IProyectoSpecification
     {

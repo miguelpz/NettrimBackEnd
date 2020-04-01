@@ -7,11 +7,8 @@ namespace NettrimCh.Api.Domain.Specifications.GlobalSpecifications.DNISpecificat
         public bool isSatisfiedBy(string dni)
         {
 
-            if (Regex.IsMatch(dni, @"/^(x?\d{8}|[xyz]\d{7})[trwagmyfpdxbnjzsqvhlcke]$/"))
-            {
-                return true;
-            }
-            return false;
+            return Regex.IsMatch(dni, @"/^(x?\d{8}|[xyz]\d{7})[trwagmyfpdxbnjzsqvhlcke]$/");
+           
         }
     }
 }

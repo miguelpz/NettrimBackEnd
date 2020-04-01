@@ -9,11 +9,8 @@ namespace NettrimCh.Api.Domain.Specifications.GlobalSpecifications.ClaveSpecific
     {
         public bool IsSatisfiedBy(string clave)
         {
-            if (Regex.IsMatch(clave, @"/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])\S{8,16}$"))
-            {
-                return true;
-            }
-            return false;
+            return Regex.IsMatch(clave, @"/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])\S{8,16}$");
+            
         }
     }
 }
