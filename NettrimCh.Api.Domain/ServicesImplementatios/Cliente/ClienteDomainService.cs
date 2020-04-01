@@ -14,7 +14,6 @@ namespace NettrimCh.Api.Domain.Services.Cliente
         public ClienteDomainService(IClienteRepository clienteRepository)
         {
             _clienteRepository = clienteRepository;
-           
         }
 
         public IEnumerable<ClienteEntity> GetAll()

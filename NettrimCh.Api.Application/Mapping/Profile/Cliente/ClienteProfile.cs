@@ -11,11 +11,22 @@ namespace  NettrimCh.Api.Application.Mapping.Profile.Cliente
     {
         public ClienteProfile()
         {
-           
             CreateMap<Entities.ClienteEntity, Dtos.ClienteDto>()
                 .ForMember(
                     dest => dest.Nombre,
-                    opt => opt.MapFrom(src => src.Cliente)
+                    opt => opt.MapFrom(src => src.Nombre)
+                )
+                .ForMember(
+                    dest => dest.Direccion,
+                    opt => opt.MapFrom(src => src.Direccion)
+                )
+                .ForMember(
+                    dest => dest.Responsable,
+                    opt => opt.MapFrom(src => src.Responsable)
+                )
+                .ForMember(
+                    dest => dest.Telefono,
+                    opt => opt.MapFrom(src => src.Telefono)
                 );                           
         }
     }

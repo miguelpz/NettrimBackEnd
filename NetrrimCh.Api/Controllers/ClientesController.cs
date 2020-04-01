@@ -13,18 +13,17 @@ namespace NettrimCh.Api.Controllers
     [ApiController]
     public class ClientesController : ControllerBase
     {
-        private readonly IClienteApplicationService _clienteApplicationSerice;
-        public ClientesController(IClienteApplicationService clienteApplicationSerice)
+        private readonly IClienteApplicationService _clienteApplicationService;
+        public ClientesController(IClienteApplicationService clienteApplicationService)
         {
-            _clienteApplicationSerice = clienteApplicationSerice;
+            _clienteApplicationService = clienteApplicationService;
         }
         
         // GET: api/Clientes
         [HttpGet]
         public IEnumerable<ClienteDto> GetAll()
-        
         {
-            return _clienteApplicationSerice.GetAll();
+            return _clienteApplicationService.GetAll();
         }
 
         // GET: api/Clientes/5

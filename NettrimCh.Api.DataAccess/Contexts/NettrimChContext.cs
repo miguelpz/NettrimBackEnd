@@ -28,13 +28,11 @@ namespace NettrimCh.Api.DataAccess.Models
         {
             modelBuilder.Entity<ClienteModel>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.Id);
 
-                entity.Property(e => e.Cliente).HasMaxLength(255);
+                entity.Property(e => e.Nombre).HasMaxLength(255);
 
-                entity.Property(e => e.Código).HasMaxLength(255);
-
-                entity.Property(e => e.Dirección).HasMaxLength(255);
+                entity.Property(e => e.Direccion).HasMaxLength(255);
 
                 entity.Property(e => e.Responsable).HasMaxLength(255);
 
