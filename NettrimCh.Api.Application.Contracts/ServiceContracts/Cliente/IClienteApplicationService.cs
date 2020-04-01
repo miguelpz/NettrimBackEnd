@@ -8,6 +8,9 @@ namespace NettrimCh.Api.Application.Contracts.ServiceContracts.Cliente
     public interface IClienteApplicationService
     {
         IEnumerable<ClienteDto> GetAll();
-        bool Update(int id, ClienteDto cliente);
+        ClienteDto GetById(int id);
+        ClienteDto Add(ClienteDto cliente);
+        void Update(int id, ClienteDto cliente);
+        ClienteDto Delete(int id);
     }
 }

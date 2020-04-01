@@ -2,8 +2,10 @@
 using NettrimCh.Api.Domain.Entities;
 using NettrimCh.Api.Domain.Mapping.Extension.Cliente;
 using NettrimCh.Api.Domain.ServicesContracts.Cliente;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace NettrimCh.Api.Domain.Services.Cliente
 {
@@ -19,30 +21,57 @@ namespace NettrimCh.Api.Domain.Services.Cliente
         }
 
         public IEnumerable<ClienteEntity> GetAll()
-        {
-            try
-            {
-                var clientList = _clienteRepository.GetAll().Result;
-                return clientList.toEntity();
-            }
-            catch
-            {
-                return Enumerable.Empty<ClienteEntity>();
-            }
+        {         
+            var clientList = _clienteRepository.GetAll().Result;
+            return clientList.toEntity();          
         }
 
-        public bool Update(int id, ClienteEntity clienteEntity)
+        public ClienteEntity GetByID (int id)
         {
-            if (clienteEntity.Id != id) return false;
-            
-            try
+            var client = _clienteRepository.GetById(id).Result;
+            return client.toEntity();
+        }
+
+        public ClienteEntity GetSingleOrDefault(string telefono)
+        {
+            var cliente = _clienteRepository.GetSingleOrDefault(x => x.Telefono == telefono).Result;
+            return cliente.toEntity();
+        }
+
+        public ClienteEntity Add (ClienteEntity clientEntity)
+        {
+            var clientByTelefono = GetSingleOrDefault(clientEntity.Telefono);
+
+            if (clientByTelefono != null)
             {
-                return _clienteRepository.Update(id, clienteEntity.toModel()).Result;
-            } 
-            catch 
-            {
-                return false;
+                throw new Exception("Element already exist");
             }
+           
+            var client = _clienteRepository.Add(clientEntity.toModel()).Result;
+
+            return client.toEntity();
+        }
+        public void Update(int id, ClienteEntity clienteEntity)
+        {
+            if (clienteEntity.Id!=id)
+            {
+                throw new Exception("Element id not equal to send object");
+            }
+            
+            _clienteRepository.Update(id, clienteEntity.toModel());          
+        }
+
+        public ClienteEntity Delete (int id)
+        {
+            var clienteToDelete = _clienteRepository.GetById(id).Result;
+
+            if (clienteToDelete == null)
+            {
+                throw new Exception("Element to delete no exist");
+            }
+            
+            var deletedCliente= _clienteRepository.Delete(id).Result;
+            return deletedCliente.toEntity();
         }
     }
     

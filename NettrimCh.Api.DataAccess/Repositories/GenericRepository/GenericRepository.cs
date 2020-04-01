@@ -4,6 +4,7 @@ using NettrimCh.Api.DataAccess.Contracts.Models;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.GenericRepository;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace NettrimCh.Api.DataAccess.Repositories.GenericRepository
@@ -18,41 +19,51 @@ namespace NettrimCh.Api.DataAccess.Repositories.GenericRepository
             return await _table.ToListAsync().ConfigureAwait(false);
         }
 
-        public virtual async Task<T> GetById(object id)
+        public virtual async Task<T> GetById(int id)
         {
             return await _table.FindAsync(id).ConfigureAwait(false);
         }
 
-        public virtual async Task Add(T obj)
+        public virtual async Task<T> GetSingleOrDefault(Expression<Func<T, bool>> predicado)
         {
-            await Task.Run(() => _table.Add(obj)).ConfigureAwait(false);
+            return await _table.FirstOrDefaultAsync(predicado);
         }
 
-        public virtual async Task<bool> Update(int id, T obj)
-        {                      
-            var objToChange = await _table.FindAsync(id).ConfigureAwait(false);
-                       
-            if (objToChange != null)
-            {                
-                await Task.Run(() => _context.Entry(objToChange).State = EntityState.Detached).ConfigureAwait(false);
-                await Task.Run(() => _context.Entry(obj).State = EntityState.Modified).ConfigureAwait(false);
+
+
+        public virtual async Task<T> Add(T obj)
+        {
+            var result = await _table.AddAsync(obj);
+            await Save();
+            
+            return result.Entity;                     
+        }
+
+        public virtual async Task Update(int id, T entity)
+        {
+            var clientToUpdate = await _table.FindAsync(id).ConfigureAwait(false);
+
+            if (clientToUpdate != null)
+            {
+                await Task.Run(() => _context.Entry(clientToUpdate).State = EntityState.Detached).ConfigureAwait(false);
+                await Task.Run(() => _context.Entry(entity).State = EntityState.Modified).ConfigureAwait(false);
                 await Task.Run(() => _context.SaveChangesAsync().ConfigureAwait(false));
-                
-                return await Task.FromResult<bool>(true);
+
+
             }
-
-            return await Task.FromResult<bool>(false);
         }
-
-        public virtual async Task Delete(object id)
+        public virtual async Task<T> Delete(int id)
         {
-            T existing = await _table.FindAsync(id).ConfigureAwait(false);
-            _table.Remove(existing);
+            var objToDelete = await _table.FindAsync(id).ConfigureAwait(false);
+            var result = _table.Remove(objToDelete);            
+            await Save();
+            return result.Entity;
         }
 
         public virtual async Task Save()
         {
             await _context.SaveChangesAsync().ConfigureAwait(false);
+
         }
     }
 }

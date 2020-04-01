@@ -22,10 +22,26 @@ namespace NettrimCh.Api.Application.Services
             return _clienteDomainService.GetAll().toDto();
 
         }
-
-        public bool Update(int id, ClienteDto cliente)
+        public ClienteDto GetById (int id)
         {
-            return _clienteDomainService.Update(id, cliente.toEntity());
+            return _clienteDomainService.GetByID(id).toDto();
+        }
+
+        
+        public ClienteDto Add (ClienteDto cliente)            
+        {
+           
+            return _clienteDomainService.Add(cliente.toEntity()).toDto();
+        }
+        
+        public void Update(int id, ClienteDto cliente)
+        {
+            _clienteDomainService.Update(id, cliente.toEntity());
+        }
+
+        public ClienteDto Delete(int id)
+        {
+            return _clienteDomainService.Delete(id).toDto();
         }
     }
 }

@@ -24,6 +24,11 @@ namespace  NettrimCh.Api.Application.Mapping.Extension.Cliente
             return entity == null ? null : Mapper.Map<IEnumerable<Entities.ClienteEntity>,IEnumerable<Dtos.ClienteDto>>(entity);          
         }
 
+        public static Dtos.ClienteDto toDto(this Entities.ClienteEntity entity)
+        {
+            return entity == null ? null : Mapper.Map<Entities.ClienteEntity, Dtos.ClienteDto>(entity);
+        }
+
         public static Entities.ClienteEntity toEntity(this Dtos.ClienteDto dto)
         {
             return dto == null ? null : Mapper.Map<Dtos.ClienteDto, Entities.ClienteEntity>(dto);
