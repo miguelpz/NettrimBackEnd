@@ -1,23 +1,23 @@
 ﻿using NettrimCh.Api.Domain.Entities;
 using NettrimCh.Api.Domain.Specifications.GlobalSpecifications;
+using NettrimCh.Api.Domain.Specifications.GlobalSpecifications.TelefonoSpecification;
 
 namespace NettrimCh.Api.Domain.Specifications.ClienteSpecification
 {
     public class ClienteSpecification : IClienteSpecification
     {
-        private readonly INotNullSpecification _stringSpecification;
+        private readonly IIsTelefonoSpecification _telefonoSpecification;
         
 
-        public ClienteSpecification(INotNullSpecification stringSpecification)
+        public ClienteSpecification(IIsTelefonoSpecification telefonoSpecification)
         {
-            _stringSpecification = stringSpecification;
+            _telefonoSpecification = telefonoSpecification;
            
         }
 
         public bool IsSatisfiedBy(ClienteEntity cliente)
         {
-            return (_stringSpecification.IsSatisfiedBy(cliente.Nombre) && _stringSpecification.IsSatisfiedBy(cliente.Direccion)
-                && _stringSpecification.IsSatisfiedBy(cliente.Responsable) && _stringSpecification.IsSatisfiedBy(cliente.Telefono));
+            return (_telefonoSpecification.IsSatisfiedBy(cliente.Telefono));
                 
         }
     }

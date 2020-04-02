@@ -6,21 +6,9 @@ namespace NettrimCh.Api.Domain.Specifications.GlobalSpecifications.DNISpecificat
     {
         public bool isSatisfiedBy(string dni)
         {
-            var nifRexp = "/ ^[0 - 9]{ 8}[TRWAGMYFPDXBNJZSQVHLCKET]$/i";
-            var nieRexp = "/ ^[XYZ][0 - 9]{7}[TRWAGMYFPDXBNJZSQVHLCKET]$/i";
 
-            Regex validateNif = new Regex(nifRexp);
-            Regex validateNie = new Regex(nieRexp);
-
-            if (validateNif.IsMatch(dni))
-            {
-                return true;
-            }
-            else if (validateNie.IsMatch(dni))
-            {
-                return true;
-            }
-            return false;
+            return Regex.IsMatch(dni, @"/^(x?\d{8}|[xyz]\d{7})[trwagmyfpdxbnjzsqvhlcke]$/");
+           
         }
     }
 }

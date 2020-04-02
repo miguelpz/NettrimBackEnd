@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NettrimCh.Api.Domain.Exceptions
+namespace NettrimCh.Api.Application.Services
 {
-    class Class1
+    class ProyectoApplicarionService
     {
     }
 }
