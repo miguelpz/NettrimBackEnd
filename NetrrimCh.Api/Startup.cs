@@ -46,13 +46,13 @@ namespace NetrrimCh.Api
             
 
             //Factorias
-            services.AddScoped<IClienteFactory, ClienteFactory>();
+            //services.AddScoped<IClienteFactory, ClienteFactory>();
 
             //Specifications
-            services.AddScoped<IClienteSpecification, ClienteSpecification>();
-            services.AddScoped<IIsDNISpecification, IsDNISpecification>();
-            services.AddScoped<IIsEmailSpecification, IsEmailSpecification>();
-            services.AddScoped<INotNullSpecification, NotNullSpecification>();
+            //services.AddScoped<IClienteSpecification, ClienteSpecification>();
+            //services.AddScoped<IIsDNISpecification, IsDNISpecification>();
+            //services.AddScoped<IIsEmailSpecification, IsEmailSpecification>();
+          
 
             //Servicios
             services.AddScoped<IClienteDomainService, ClienteDomainService>();

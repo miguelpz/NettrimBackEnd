@@ -26,6 +26,15 @@ namespace NettrimCh.Api.DataAccess.Contracts.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<TipoTarea>(entity =>
+            {
+                entity.Property(e => e.Tipo).HasMaxLength(100);
+
+                
+
+            });
+
+
             modelBuilder.Entity<Cliente>(entity =>
             {
                 entity.Property(e => e.Direccion).HasMaxLength(255);
@@ -119,6 +128,11 @@ namespace NettrimCh.Api.DataAccess.Contracts.Models
                     .WithMany(p => p.Tarea)
                     .HasForeignKey(d => d.ProyectoId)
                     .HasConstraintName("FK_Tarea_Proyecto");
+
+                entity.HasOne(d => d.TipoTarea)
+                   .WithMany(p => p.Tarea)
+                   .HasForeignKey(d => d.TipoTareaId)
+                   .HasConstraintName("FK_Tarea_TipoTarea");
             });
 
             OnModelCreatingPartial(modelBuilder);
