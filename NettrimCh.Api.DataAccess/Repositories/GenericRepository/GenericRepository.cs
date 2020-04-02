@@ -30,7 +30,6 @@ namespace NettrimCh.Api.DataAccess.Repositories.GenericRepository
         }
 
 
-
         public virtual async Task<T> Add(T obj)
         {
             var result = await _table.AddAsync(obj);
@@ -41,15 +40,13 @@ namespace NettrimCh.Api.DataAccess.Repositories.GenericRepository
 
         public virtual async Task Update(int id, T entity)
         {
-            var clientToUpdate = await _table.FindAsync(id).ConfigureAwait(false);
+            var clientToUpdate = _table.Find(id);
 
             if (clientToUpdate != null)
             {
-                await Task.Run(() => _context.Entry(clientToUpdate).State = EntityState.Detached).ConfigureAwait(false);
-                await Task.Run(() => _context.Entry(entity).State = EntityState.Modified).ConfigureAwait(false);
-                await Task.Run(() => _context.SaveChangesAsync().ConfigureAwait(false));
-
-
+                _context.Entry(clientToUpdate).State = EntityState.Detached;
+                _table.Update(entity);
+                await Save();                
             }
         }
         public virtual async Task<T> Delete(int id)

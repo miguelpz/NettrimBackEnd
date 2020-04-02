@@ -100,8 +100,7 @@ namespace NettrimCh.Api.Controllers
         public IActionResult Delete(int id)
         {
             try
-            {
-                _clienteApplicationSerice.Update(3, new ClienteDto(){ Id = 2 });
+            {                
                 var deletedObject=_clienteApplicationSerice.Delete(id);
                 return Ok(deletedObject);
             }
