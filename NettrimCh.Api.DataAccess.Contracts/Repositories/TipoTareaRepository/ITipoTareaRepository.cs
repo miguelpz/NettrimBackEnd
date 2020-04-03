@@ -6,8 +6,7 @@ using System.Text;
 
 namespace NettrimCh.Api.DataAccess.Contracts.Repositories.ClienteRepository
 {
-    public interface IClienteRepository: IGenericRepository<Cliente>
+    public interface ITipoTareaRepository: IGenericRepository<TipoTarea>
     {
     }
-    
 }

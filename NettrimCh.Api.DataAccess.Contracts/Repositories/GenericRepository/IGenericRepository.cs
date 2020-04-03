@@ -12,7 +12,7 @@ namespace NettrimCh.Api.DataAccess.Contracts.Repositories.GenericRepository
         Task<T> GetById(int id);
         Task<T> GetSingleOrDefault(Expression<Func<T, bool>> predicado);
         Task<T> Add(T entity);
-        Task Update(int id, T entity);
+        Task<int> Update(int id, T entity);
         Task<T> Delete(int id);
         Task Save();
     }

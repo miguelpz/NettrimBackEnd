@@ -53,12 +53,17 @@ namespace NettrimCh.Api.Domain.Services.Cliente
         }
         public void Update(int id, ClienteEntity clienteEntity)
         {
-            if (clienteEntity.Id!=id)
+            if (clienteEntity.Id != id)
             {
                 throw new Exception("Element id not equal to send object");
             }
-            
-            _clienteRepository.Update(id, clienteEntity.toModel());          
+
+            var result = _clienteRepository.Update(id, clienteEntity.toModel()).Result;
+
+            if (result == 0)
+            {
+                throw new Exception("El elemento a actualizar no existe");
+            }
         }
 
         public ClienteEntity Delete (int id)

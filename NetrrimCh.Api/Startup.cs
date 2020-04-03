@@ -5,13 +5,17 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NettrimCh.Api.Application.Contracts.ServiceContracts.Cliente;
+using NettrimCh.Api.Application.Contracts.ServiceContracts.TipoTarea;
 using NettrimCh.Api.Application.Services;
 using NettrimCh.Api.DataAccess.Contracts.Models;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.ClienteRepository;
 using NettrimCh.Api.DataAccess.Repositories.ClienteRepository;
+using NettrimCh.Api.DataAccess.Repositories.TipoTareaRepository;
 using NettrimCh.Api.Domain.Factories.ClienteFactory;
 using NettrimCh.Api.Domain.Services.Cliente;
 using NettrimCh.Api.Domain.ServicesContracts.Cliente;
+using NettrimCh.Api.Domain.ServicesContracts.TipoTarea;
+using NettrimCh.Api.Domain.ServicesImplementatios.TipoTarea;
 using NettrimCh.Api.Domain.Specifications.ClienteSpecification;
 using NettrimCh.Api.Domain.Specifications.GlobalSpecifications;
 using NettrimCh.Api.Domain.Specifications.GlobalSpecifications.DNISpecification;
@@ -43,7 +47,9 @@ namespace NetrrimCh.Api
 
             //Repositorios
             services.AddScoped<IClienteRepository, ClienteRepository>();
-            
+            services.AddScoped<ITipoTareaRepository, TipoTareaRepository>();
+           
+
 
             //Factorias
             //services.AddScoped<IClienteFactory, ClienteFactory>();
@@ -52,11 +58,13 @@ namespace NetrrimCh.Api
             //services.AddScoped<IClienteSpecification, ClienteSpecification>();
             //services.AddScoped<IIsDNISpecification, IsDNISpecification>();
             //services.AddScoped<IIsEmailSpecification, IsEmailSpecification>();
-          
+
 
             //Servicios
             services.AddScoped<IClienteDomainService, ClienteDomainService>();
             services.AddScoped<IClienteApplicationService, ClienteApplicationService>();
+            services.AddScoped<ITipoTareaDomainService, TipoTareaDomainService>();
+            services.AddScoped<ITipoTareaApplicationService, TipoTareaApplicationService>();
 
 
 

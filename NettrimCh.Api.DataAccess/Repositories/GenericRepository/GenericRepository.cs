@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace NettrimCh.Api.DataAccess.Repositories.GenericRepository
 {
-    public abstract class GenericRepository<T>: IGenericRepository<T> where T : class
+    public abstract class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         public NettrimDbContext _context;
         public DbSet<T> _table;
@@ -34,21 +34,26 @@ namespace NettrimCh.Api.DataAccess.Repositories.GenericRepository
         {
             var result = await _table.AddAsync(obj);
             await Save();
-            
-            return result.Entity;                     
+
+            return result.Entity;
         }
 
-        public virtual async Task Update(int id, T entity)
+        public virtual async Task<int> Update(int id, T entity)
         {
-            var clientToUpdate = _table.Find(id);
+            var tipoTareaToUpdate = await _table.FindAsync(id).ConfigureAwait(false);
 
-            if (clientToUpdate != null)
+            if (tipoTareaToUpdate != null)
             {
-                _context.Entry(clientToUpdate).State = EntityState.Detached;
+                _context.Entry(tipoTareaToUpdate).State = EntityState.Detached;
                 _table.Update(entity);
-                await Save();                
+                return await _context.SaveChangesAsync();
             }
+
+            return 0;
+           
         }
+    
+    
         public virtual async Task<T> Delete(int id)
         {
             var objToDelete = await _table.FindAsync(id).ConfigureAwait(false);
