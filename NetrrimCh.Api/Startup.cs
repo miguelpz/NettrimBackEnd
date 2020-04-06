@@ -78,6 +78,8 @@ namespace NetrrimCh.Api
 
             services.AddScoped<IAttachFileService, AttachFileService>();
 
+            services.AddScoped<IAttachFileService, AttachFileService>();
+
 
 
 
