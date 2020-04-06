@@ -9,12 +9,18 @@ using NettrimCh.Api.Application.Contracts.ServiceContracts.TipoTarea;
 using NettrimCh.Api.Application.Services;
 using NettrimCh.Api.DataAccess.Contracts.Models;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.ClienteRepository;
+using NettrimCh.Api.DataAccess.Contracts.Repositories.TareaAdjuntosRepository;
 using NettrimCh.Api.DataAccess.Repositories.ClienteRepository;
+using NettrimCh.Api.DataAccess.Repositories.TareaAdjuntosRepository;
 using NettrimCh.Api.DataAccess.Repositories.TipoTareaRepository;
 using NettrimCh.Api.Domain.Factories.ClienteFactory;
 using NettrimCh.Api.Domain.Services.Cliente;
 using NettrimCh.Api.Domain.ServicesContracts.Cliente;
+using NettrimCh.Api.Domain.ServicesContracts.Common;
+using NettrimCh.Api.Domain.ServicesContracts.TareaAdjuntos;
 using NettrimCh.Api.Domain.ServicesContracts.TipoTarea;
+using NettrimCh.Api.Domain.ServicesImplementatios.Comon;
+using NettrimCh.Api.Domain.ServicesImplementatios.TareaAdjuntos;
 using NettrimCh.Api.Domain.ServicesImplementatios.TipoTarea;
 using NettrimCh.Api.Domain.Specifications.ClienteSpecification;
 using NettrimCh.Api.Domain.Specifications.GlobalSpecifications;
@@ -48,7 +54,10 @@ namespace NetrrimCh.Api
             //Repositorios
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<ITipoTareaRepository, TipoTareaRepository>();
+            services.AddScoped<ITareaAdjuntosRepository, TareaAdjuntosRepository>();
+
            
+
 
 
             //Factorias
@@ -65,6 +74,9 @@ namespace NetrrimCh.Api
             services.AddScoped<IClienteApplicationService, ClienteApplicationService>();
             services.AddScoped<ITipoTareaDomainService, TipoTareaDomainService>();
             services.AddScoped<ITipoTareaApplicationService, TipoTareaApplicationService>();
+            services.AddScoped<ITareaAdjuntosDomainService, TareaAdjuntosDomainService>();
+
+            services.AddScoped<IAttachFileService, AttachFileService>();
 
 
 
