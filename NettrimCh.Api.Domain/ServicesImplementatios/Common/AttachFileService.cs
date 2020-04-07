@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using NettrimCh.Api.Domain.ServicesContracts.Common;
 using System;
 using System.Collections.Generic;
@@ -17,27 +18,32 @@ namespace NettrimCh.Api.Domain.ServicesImplementatios.Comon
 
     public class AttachFileService : IAttachFileService
     {
-        private const string UPLOADS_DIRECTORY = @"\Uploads";
+        public string UplodasDirectory { get; set; }
 
         private IHostingEnvironment _env;
+        private IConfiguration _configuration;
 
-        public AttachFileService(IHostingEnvironment env)
+        public AttachFileService(IHostingEnvironment env, IConfiguration configuration)
         {
             _env = env;
+            _configuration = configuration;
+            UplodasDirectory = _configuration.GetValue<string>("GeneralParameters:UploadDirectory");
+            
         }
 
-        public async Task<OperationFileResponse> AddFile(string idTarea, string nombreEmpleado, IFormFile file)
+        public async Task<OperationFileResponse> AddFile(string filePath, IFormFile file)
         {
-            var webRoot = _env.ContentRootPath + UPLOADS_DIRECTORY;
-            var path = System.IO.Path.Combine(webRoot, idTarea, nombreEmpleado);
+            var webRoot = _env.ContentRootPath + UplodasDirectory;
+            var absolutePath = System.IO.Path.Combine(webRoot, filePath);
 
 
-            if (!Directory.Exists(path))
+            if (!Directory.Exists(absolutePath))
             {
-                DirectoryInfo di = Directory.CreateDirectory(path);
+                DirectoryInfo di = Directory.CreateDirectory(absolutePath);
             }
 
-            var filePathComeplete = System.IO.Path.Combine(path, file.FileName);
+            var filePathComeplete = System.IO.Path.Combine(absolutePath, file.FileName);
+            var relativePathComplete = System.IO.Path.Combine(filePath, file.FileName);
 
             try
             {
@@ -53,24 +59,16 @@ namespace NettrimCh.Api.Domain.ServicesImplementatios.Comon
                 return new OperationFileResponse() { Ok = false, Result = ex.Message };
             }
 
-            return new OperationFileResponse() { Ok = true, Result = filePathComeplete };
+            return new OperationFileResponse() { Ok = true, Result = relativePathComplete };
         }
 
-        public OperationFileResponse DeleteFile(string filePath)
+        public void DeleteFile(string filePath)
         {
-            var webRoot = _env.ContentRootPath + @"\Uploads";
 
-            try
-            {
-                File.Delete(filePath);
-            }
-            catch (Exception ex)
-            {
-
-                return new OperationFileResponse() { Ok = false, Result = ex.Message };
-            }
-
-            return new OperationFileResponse() { Ok = true, Result = filePath };
+            var webRoot = _env.ContentRootPath + UplodasDirectory;
+            var absoluteFilePath = System.IO.Path.Combine(webRoot, filePath);
+          
+                File.Delete(absoluteFilePath);          
         }
 
 

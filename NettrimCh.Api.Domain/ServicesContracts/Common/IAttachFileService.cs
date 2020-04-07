@@ -9,7 +9,7 @@ namespace NettrimCh.Api.Domain.ServicesContracts.Common
 {
     public interface IAttachFileService
     {
-        Task<OperationFileResponse> AddFile(string idTarea, string nombreEmpleado, IFormFile file);
-        OperationFileResponse DeleteFile(string filePath);
+        Task<OperationFileResponse> AddFile(string filePath, IFormFile file);
+        void DeleteFile(string filePath);
     }
 }

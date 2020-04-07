@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using NettrimCh.Api.Domain.ServicesContracts.TareaAdjuntos;
 
 namespace NetrrimCh.Api.Controllers
 {
@@ -17,10 +19,13 @@ namespace NetrrimCh.Api.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ITareaAdjuntosDomainService _tareaAdjuntosDomainService;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, ITareaAdjuntosDomainService tareaAdjuntosDomainService)
         {
             _logger = logger;
+            _tareaAdjuntosDomainService = tareaAdjuntosDomainService;
+
         }
 
         [HttpGet]
@@ -34,6 +39,28 @@ namespace NetrrimCh.Api.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            try
+            {
+               _tareaAdjuntosDomainService.DeleteAttachment(id);
+                return Ok();
+            }catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+
+        }
+
+        [HttpPost]
+        public async Task Post([FromForm] int idTarea, [FromForm] IFormFile file)
+        {
+            await _tareaAdjuntosDomainService.AddAttachment(idTarea, file);
+            
+
         }
     }
 }

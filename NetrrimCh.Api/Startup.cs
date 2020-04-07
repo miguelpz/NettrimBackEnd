@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using NettrimCh.Api.Application.Contracts.ServiceContracts.Cliente;
 using NettrimCh.Api.Application.Contracts.ServiceContracts.Tarea;
@@ -10,9 +11,13 @@ using NettrimCh.Api.Application.Contracts.ServiceContracts.TipoTarea;
 using NettrimCh.Api.Application.Services;
 using NettrimCh.Api.DataAccess.Contracts.Models;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.ClienteRepository;
+using NettrimCh.Api.DataAccess.Contracts.Repositories.EmpleadoRepository;
+using NettrimCh.Api.DataAccess.Contracts.Repositories.ProyectoRepository;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.TareaAdjuntosRepository;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.TareaRepository;
 using NettrimCh.Api.DataAccess.Repositories.ClienteRepository;
+using NettrimCh.Api.DataAccess.Repositories.EmpleadoRepository;
+using NettrimCh.Api.DataAccess.Repositories.ProyectoRepository;
 using NettrimCh.Api.DataAccess.Repositories.TareaAdjuntosRepository;
 using NettrimCh.Api.DataAccess.Repositories.TareaRepository;
 using NettrimCh.Api.DataAccess.Repositories.TipoTareaRepository;
@@ -31,6 +36,7 @@ using NettrimCh.Api.Domain.Specifications.ClienteSpecification;
 using NettrimCh.Api.Domain.Specifications.GlobalSpecifications;
 using NettrimCh.Api.Domain.Specifications.GlobalSpecifications.DNISpecification;
 using NettrimCh.Api.Domain.Specifications.GlobalSpecifications.EmailSpecification;
+using System.IO;
 
 namespace NetrrimCh.Api
 {
@@ -61,7 +67,10 @@ namespace NetrrimCh.Api
             services.AddScoped<ITipoTareaRepository, TipoTareaRepository>();
             services.AddScoped<ITareaAdjuntosRepository, TareaAdjuntosRepository>();
             services.AddScoped<ITareaRepository, TareaRepository>();
-            
+            services.AddScoped<IProyectoRepository, ProyectoRepository>();
+            services.AddScoped<IEmpleadoRepository, EmpleadoRepository>();
+
+
 
 
 
@@ -106,6 +115,17 @@ namespace NetrrimCh.Api
             }
             
             app.UseCors(MyAllowSpecificOrigins);
+
+            
+
+            app.UseStaticFiles();
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+            Path.Combine(Directory.GetCurrentDirectory(), "Uploads")),
+                RequestPath = "/" + Configuration.GetValue<string>("GeneralParameters:FileRoot")
+            });
 
             app.UseHttpsRedirection();
 
