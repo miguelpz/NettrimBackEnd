@@ -13,8 +13,4 @@
     <ProjectReference Include="..\NettrimCh.Api.DataAccess\NettrimCh.Api.DataAccess.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ServicesImplementatios\NewFolder\" />
-  </ItemGroup>
-
 </Project>

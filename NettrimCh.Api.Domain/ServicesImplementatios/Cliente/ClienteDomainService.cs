@@ -2,6 +2,7 @@
 using NettrimCh.Api.Domain.Entities;
 using NettrimCh.Api.Domain.Mapping.Extension.Cliente;
 using NettrimCh.Api.Domain.ServicesContracts.Cliente;
+using NettrimCh.Api.Domain.ServicesContracts.Tarea;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -6,14 +6,14 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NettrimCh.Api.DataAccess.Repositories.ClienteRepository
+namespace NettrimCh.Api.DataAccess.Repositories.TareaRepository
 {
-    public class ClienteRepository:GenericRepository<Cliente>, IClienteRepository
+    public class TareaRepository:GenericRepository<Tarea>, ITareaRepository
     {
-        public ClienteRepository(NettrimDbContext context)
+        public TareaRepository(NettrimDbContext context)
         {
             _context = context;
-            _table = _context.Set<Cliente>();
+            _table = _context.Set<Tarea>();
         }
     }
 }

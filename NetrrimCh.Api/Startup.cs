@@ -5,18 +5,23 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NettrimCh.Api.Application.Contracts.ServiceContracts.Cliente;
+using NettrimCh.Api.Application.Contracts.ServiceContracts.Tarea;
 using NettrimCh.Api.Application.Contracts.ServiceContracts.TipoTarea;
 using NettrimCh.Api.Application.Services;
 using NettrimCh.Api.DataAccess.Contracts.Models;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.ClienteRepository;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.TareaAdjuntosRepository;
+using NettrimCh.Api.DataAccess.Contracts.Repositories.TareaRepository;
 using NettrimCh.Api.DataAccess.Repositories.ClienteRepository;
 using NettrimCh.Api.DataAccess.Repositories.TareaAdjuntosRepository;
+using NettrimCh.Api.DataAccess.Repositories.TareaRepository;
 using NettrimCh.Api.DataAccess.Repositories.TipoTareaRepository;
 using NettrimCh.Api.Domain.Factories.ClienteFactory;
 using NettrimCh.Api.Domain.Services.Cliente;
+using NettrimCh.Api.Domain.Services.Tarea;
 using NettrimCh.Api.Domain.ServicesContracts.Cliente;
 using NettrimCh.Api.Domain.ServicesContracts.Common;
+using NettrimCh.Api.Domain.ServicesContracts.Tarea;
 using NettrimCh.Api.Domain.ServicesContracts.TareaAdjuntos;
 using NettrimCh.Api.Domain.ServicesContracts.TipoTarea;
 using NettrimCh.Api.Domain.ServicesImplementatios.Comon;
@@ -55,8 +60,8 @@ namespace NetrrimCh.Api
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<ITipoTareaRepository, TipoTareaRepository>();
             services.AddScoped<ITareaAdjuntosRepository, TareaAdjuntosRepository>();
-
-           
+            services.AddScoped<ITareaRepository, TareaRepository>();
+            
 
 
 
@@ -75,6 +80,9 @@ namespace NetrrimCh.Api
             services.AddScoped<ITipoTareaDomainService, TipoTareaDomainService>();
             services.AddScoped<ITipoTareaApplicationService, TipoTareaApplicationService>();
             services.AddScoped<ITareaAdjuntosDomainService, TareaAdjuntosDomainService>();
+            services.AddScoped<ITareaDomainService, TareaDomainService>();
+            services.AddScoped<ITareaApplicationService, TareaApplicationService>();
+
 
             services.AddScoped<IAttachFileService, AttachFileService>();
 
