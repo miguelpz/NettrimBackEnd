@@ -52,9 +52,11 @@ namespace NettrimCh.Api.DataAccess.Contracts.Models
 
                 entity.Property(e => e.Apellido2).HasMaxLength(50);
 
-                entity.Property(e => e.Clave).HasMaxLength(25);
+                entity.Property(e => e.Clave).HasMaxLength(255);
 
                 entity.Property(e => e.Email).HasMaxLength(50);
+                
+                entity.Property(e => e.Rol).HasMaxLength(10);
 
                 entity.Property(e => e.Nombre)
                     .IsRequired()

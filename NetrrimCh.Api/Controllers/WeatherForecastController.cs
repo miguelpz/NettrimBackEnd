@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using NettrimCh.Api.CrossCutting.Encriptado;
 using NettrimCh.Api.Domain.ServicesContracts.TareaAdjuntos;
 
 namespace NetrrimCh.Api.Controllers
@@ -20,17 +21,25 @@ namespace NetrrimCh.Api.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
         private readonly ITareaAdjuntosDomainService _tareaAdjuntosDomainService;
+        private readonly ICipherService _cipherService;
+        
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, ITareaAdjuntosDomainService tareaAdjuntosDomainService)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, ITareaAdjuntosDomainService tareaAdjuntosDomainService, ICipherService cipherService)
         {
             _logger = logger;
             _tareaAdjuntosDomainService = tareaAdjuntosDomainService;
+            _cipherService = cipherService;
+
 
         }
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            var result = _cipherService.Encrypt("holita");
+            var result2 = _cipherService.Encrypt("pastakaslpi_3").Length;
+            var result3 = _cipherService.Encrypt("holita");
+
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

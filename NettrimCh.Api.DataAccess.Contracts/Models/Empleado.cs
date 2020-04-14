@@ -17,6 +17,7 @@ namespace NettrimCh.Api.DataAccess.Contracts.Models
         public bool Baja { get; set; }
         public string Apellido1 { get; set; }
         public string Apellido2 { get; set; }
+        public string Rol { get; set; }
 
         public virtual ICollection<Tarea> Tarea { get; set; }
     }

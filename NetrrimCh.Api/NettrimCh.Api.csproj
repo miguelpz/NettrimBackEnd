@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NettrimCh.Api.Application\NettrimCh.Api.Application.csproj" />
+    <ProjectReference Include="..\NettrimCh.Api.CrossCutting\NettrimCh.Api.CrossCutting.csproj" />
     <ProjectReference Include="..\NettrimCh.Api.DataAccess\NettrimCh.Api.DataAccess.csproj" />
     <ProjectReference Include="..\NettrimCh.Api.Domain\NettrimCh.Api.Domain.csproj" />
   </ItemGroup>

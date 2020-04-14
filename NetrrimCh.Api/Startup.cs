@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption;
+using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -9,6 +12,7 @@ using NettrimCh.Api.Application.Contracts.ServiceContracts.Cliente;
 using NettrimCh.Api.Application.Contracts.ServiceContracts.Tarea;
 using NettrimCh.Api.Application.Contracts.ServiceContracts.TipoTarea;
 using NettrimCh.Api.Application.Services;
+using NettrimCh.Api.CrossCutting.Encriptado;
 using NettrimCh.Api.DataAccess.Contracts.Models;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.ClienteRepository;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.EmpleadoRepository;
@@ -64,6 +68,15 @@ namespace NetrrimCh.Api
                 });
             });
 
+            
+            //Encriptación
+            services.AddDataProtection()
+                .UseCryptographicAlgorithms(new AuthenticatedEncryptorConfiguration()
+                {
+                    EncryptionAlgorithm = EncryptionAlgorithm.AES_256_GCM,
+                    ValidationAlgorithm = ValidationAlgorithm.HMACSHA256
+                });
+               
             //Repositorios
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<ITipoTareaRepository, TipoTareaRepository>();
@@ -85,7 +98,7 @@ namespace NetrrimCh.Api
             //services.AddScoped<IIsEmailSpecification, IsEmailSpecification>();
 
 
-            //Servicios
+            //Servicios Mantenimiento
             services.AddScoped<IClienteDomainService, ClienteDomainService>();
             services.AddScoped<IClienteApplicationService, ClienteApplicationService>();
             services.AddScoped<ITipoTareaDomainService, TipoTareaDomainService>();
@@ -95,9 +108,13 @@ namespace NetrrimCh.Api
             services.AddScoped<ITareaApplicationService, TareaApplicationService>();
 
 
+            //Servicios Mantenimiento Transversales
+            services.AddScoped<IAttachFileService, AttachFileService>();
             services.AddScoped<IAttachFileService, AttachFileService>();
 
-            services.AddScoped<IAttachFileService, AttachFileService>();
+            //Servicios Transversales
+            services.AddScoped<ICipherService, CipherService>();
+
 
 
 
