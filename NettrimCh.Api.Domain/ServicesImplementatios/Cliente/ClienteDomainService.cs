@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection.Metadata.Ecma335;
 
 namespace NettrimCh.Api.Domain.Services.Cliente
 {
@@ -39,21 +40,24 @@ namespace NettrimCh.Api.Domain.Services.Cliente
             return cliente.toEntity();
         }
 
-        public ClienteEntity Add (ClienteEntity clientEntity)
-        {
-            var clientByTelefono = GetSingleOrDefault(clientEntity.Telefono);
-
-            if (clientByTelefono != null)
+        public ClienteEntity Add (ClienteEntity clienteEntity)
+        {           
+            if (IsTelefonoDuplicate(clienteEntity))
             {
-                throw new Exception("Element already exist");
+                throw new Exception("Telephone number already exist");
             }
-           
-            var client = _clienteRepository.Add(clientEntity.toModel()).Result;
+      
+            var client = _clienteRepository.Add(clienteEntity.toModel()).Result;
 
             return client.toEntity();
         }
         public void Update(int id, ClienteEntity clienteEntity)
         {
+            if (IsTelefonoDuplicate(clienteEntity))
+            {
+                throw new Exception("Telephone number already exist");
+            }
+
             if (clienteEntity.Id != id)
             {
                 throw new Exception("Element id not equal to send object");
@@ -78,6 +82,11 @@ namespace NettrimCh.Api.Domain.Services.Cliente
             
             var deletedCliente= _clienteRepository.Delete(id).Result;
             return deletedCliente.toEntity();
+        }
+
+        private bool IsTelefonoDuplicate (ClienteEntity clienteEntity)
+        {
+            return GetSingleOrDefault(clienteEntity.Telefono) != null;
         }
     }
     

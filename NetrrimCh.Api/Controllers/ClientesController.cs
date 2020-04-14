@@ -84,7 +84,7 @@ namespace NettrimCh.Api.Controllers
             try
             {
                 _clienteApplicationSerice.Update(id, cliente);
-                return Ok();
+                return Ok(cliente);
             }
             catch (Exception ex)
             {
