@@ -8,6 +8,7 @@ namespace NettrimCh.Api.Domain.Entities
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
+        public string NombreCliente { get; set; }
         public string Descripcion { get; set; }
         public bool Interno { get; set; }
         public bool Facturar { get; set; }

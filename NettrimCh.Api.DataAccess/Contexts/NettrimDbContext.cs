@@ -28,12 +28,8 @@ namespace NettrimCh.Api.DataAccess.Contracts.Models
         {
             modelBuilder.Entity<TipoTarea>(entity =>
             {
-                entity.Property(e => e.Tipo).HasMaxLength(100);
-
-                
-
+                entity.Property(e => e.Tipo).HasMaxLength(100);              
             });
-
 
             modelBuilder.Entity<Cliente>(entity =>
             {
@@ -52,7 +48,7 @@ namespace NettrimCh.Api.DataAccess.Contracts.Models
 
                 entity.Property(e => e.Apellido2).HasMaxLength(50);
 
-                entity.Property(e => e.Clave).HasMaxLength(255);
+                entity.Property(e => e.Password).HasMaxLength(255);
 
                 entity.Property(e => e.Email).HasMaxLength(50);
                 

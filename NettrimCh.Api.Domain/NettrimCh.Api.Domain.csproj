@@ -7,9 +7,11 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NettrimCh.Api.CrossCutting\NettrimCh.Api.CrossCutting.csproj" />
     <ProjectReference Include="..\NettrimCh.Api.DataAccess\NettrimCh.Api.DataAccess.csproj" />
   </ItemGroup>
 
