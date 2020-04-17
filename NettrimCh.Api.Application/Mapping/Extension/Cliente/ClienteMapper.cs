@@ -8,11 +8,11 @@ using Entities = NettrimCh.Api.Domain.Entities;
 
 namespace  NettrimCh.Api.Application.Mapping.Extension.Cliente
 {
-    public static class ClienteMapper
+    public static class EmpleadoMapper
     {
         internal static IMapper Mapper { get; }
 
-        static ClienteMapper()
+        static EmpleadoMapper()
         {
             Mapper = new MapperConfiguration
                     (cfg => { cfg.AddProfile<ClienteProfile>(); })
