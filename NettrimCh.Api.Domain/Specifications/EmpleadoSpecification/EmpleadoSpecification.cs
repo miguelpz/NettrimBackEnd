@@ -23,8 +23,8 @@ namespace NettrimCh.Api.Domain.Specifications.EmpleadoSpecification
         }
         public bool IsSatisfiedBy(EmpleadoEntity empleado)
         {
-            return (_emailSpecification.isSatisfiedBy(empleado.Email) && _dNISpecification.isSatisfiedBy(empleado.Password)
-                && _claveSpecification.IsSatisfiedBy(empleado.Password));
+            return (_emailSpecification.isSatisfiedBy(empleado.Email) && _dNISpecification.isSatisfiedBy(empleado.Dni)
+                && _claveSpecification.IsSatisfiedBy(empleado.Clave));
 
         }
     }
