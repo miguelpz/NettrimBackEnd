@@ -1,24 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
-namespace NettrimCh.Api.DataAccess.Contracts.Models
+namespace NettrimCh.Api.Application.Contracts.DTO
 {
-    public partial class Empleado
+    public class EmpleadoDto
     {
-        public Empleado()
-        {
-            Tarea = new HashSet<Tarea>();
-        }
-
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Apellido1 { get; set; }
         public string Apellido2 { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
-        public bool Baja { get; set; }
-        public string Rol { get; set; }
-
-        public virtual ICollection<Tarea> Tarea { get; set; }
+        public string Codigo { get; set; }      
     }
 }
