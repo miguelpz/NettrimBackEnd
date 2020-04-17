@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Dtos = NettrimCh.Api.Application.Contracts.DTO;
+using Models = NettrimCh.Api.DataAccess.Contracts.Models;
 using Entities = NettrimCh.Api.Domain.Entities;
+using System.Linq;
 
-namespace NettrimCh.Api.Application.Mapping.Profile.Proyecto
+namespace NettrimCh.Api.Domain.Mapping.Profile.Cliente
 {
     public class ProyectoProfile : AutoMapper.Profile
     {
         public ProyectoProfile()
         {
-            CreateMap<Entities.ProyectoEntity, Dtos.ProyectoDto>()
-               .ReverseMap();
+            CreateMap<Models.Proyecto, Entities.ProyectoEntity>()
+                .ReverseMap();          
         }
     }
 }
