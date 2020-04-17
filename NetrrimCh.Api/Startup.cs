@@ -9,8 +9,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using NettrimCh.Api.Application.Contracts.ServiceContracts.Cliente;
-using NettrimCh.Api.Application.Contracts.ServiceContracts.Empleado;
-using NettrimCh.Api.Application.Contracts.ServiceContracts.Proyecto;
 using NettrimCh.Api.Application.Contracts.ServiceContracts.Tarea;
 using NettrimCh.Api.Application.Contracts.ServiceContracts.TipoTarea;
 using NettrimCh.Api.Application.Services;
@@ -29,17 +27,13 @@ using NettrimCh.Api.DataAccess.Repositories.TareaRepository;
 using NettrimCh.Api.DataAccess.Repositories.TipoTareaRepository;
 using NettrimCh.Api.Domain.Factories.ClienteFactory;
 using NettrimCh.Api.Domain.Services.Cliente;
-using NettrimCh.Api.Domain.Services.Proyecto;
 using NettrimCh.Api.Domain.Services.Tarea;
 using NettrimCh.Api.Domain.ServicesContracts.Cliente;
 using NettrimCh.Api.Domain.ServicesContracts.Common;
-using NettrimCh.Api.Domain.ServicesContracts.Empleado;
-using NettrimCh.Api.Domain.ServicesContracts.Proyecto;
 using NettrimCh.Api.Domain.ServicesContracts.Tarea;
 using NettrimCh.Api.Domain.ServicesContracts.TareaAdjuntos;
 using NettrimCh.Api.Domain.ServicesContracts.TipoTarea;
 using NettrimCh.Api.Domain.ServicesImplementatios.Comon;
-using NettrimCh.Api.Domain.ServicesImplementatios.Empleado;
 using NettrimCh.Api.Domain.ServicesImplementatios.TareaAdjuntos;
 using NettrimCh.Api.Domain.ServicesImplementatios.TipoTarea;
 using NettrimCh.Api.Domain.Specifications.ClienteSpecification;
@@ -112,13 +106,6 @@ namespace NetrrimCh.Api
             services.AddScoped<ITareaAdjuntosDomainService, TareaAdjuntosDomainService>();
             services.AddScoped<ITareaDomainService, TareaDomainService>();
             services.AddScoped<ITareaApplicationService, TareaApplicationService>();
-
-            services.AddScoped<IEmpleadoApplicationService, EmpleadoApplicationService>();
-            services.AddScoped<IEmpleadoDomainService, EmpleadoDomainService>();
-
-            services.AddScoped<IProyectoApplicationService, ProyectoApplicationService>();
-            services.AddScoped<IProyectoDomainService, ProyectoDomainService>();
-
 
 
             //Servicios Mantenimiento Transversales
