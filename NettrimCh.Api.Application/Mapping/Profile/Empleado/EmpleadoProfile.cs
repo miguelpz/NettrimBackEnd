@@ -16,12 +16,8 @@ namespace  NettrimCh.Api.Application.Mapping.Profile.Empleado
             CreateMap<Dtos.EmpleadoDto, Entities.EmpleadoEntity>()
                .ReverseMap();
 
-            CreateMap<Entities.EmpleadoEntity, Dtos.EmpleadoDto>()
-                .ForMember(m =>m.Password, config => config.Ignore())
-                .ReverseMap();
 
-
-
+           
         }
     }
 }
