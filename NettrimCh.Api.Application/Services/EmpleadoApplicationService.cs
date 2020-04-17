@@ -24,13 +24,30 @@ namespace NettrimCh.Api.Application.Services
             _cipherService = cipherService;
         }
 
+        public IEnumerable<EmpleadoDto> GetAll()
+        {
+            return _empleadoDomainService.GetAll().toDto();
+
+        }
+        public EmpleadoDto GetById(int id)
+        {
+            return _empleadoDomainService.GetByID(id).toDto();
+        }
+
         public EmpleadoDto Add (EmpleadoDto empleado)
         {         
             empleado.Password = _cipherService.Encrypt(empleado.Password);
-            return _empleadoDomainService.Add(empleado.toEntity()).toDto();
+            return _empleadoDomainService.Add(empleado.toEntity()).toDto();           
+        }
 
+        public void Update(int id, EmpleadoDto empleado)
+        {
+            _empleadoDomainService.Update(id, empleado.toEntity());
+        }
 
-            
+        public EmpleadoDto Delete(int id)
+        {
+            return _empleadoDomainService.Delete(id).toDto();
         }
 
 
