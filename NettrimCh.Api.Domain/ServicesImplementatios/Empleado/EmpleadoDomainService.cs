@@ -26,6 +26,23 @@ namespace NettrimCh.Api.Domain.ServicesImplementatios.Empleado
             _empleadoRepository = empleadoRepository;
         }
 
+        public IEnumerable<EmpleadoEntity> GetAll()
+        {
+            var empleadoList = _empleadoRepository.GetAll().Result;
+            return empleadoList.toEntity();
+        }
+
+        public EmpleadoEntity GetByID(int id)
+        {
+            var empleado = _empleadoRepository.GetById(id).Result;
+            return empleado.toEntity();
+        }
+
+        public EmpleadoEntity GetSingleOrDefault(string email)
+        {
+            var cliente = _empleadoRepository.GetSingleOrDefault(x => x.Email == email).Result;
+            return cliente.toEntity();
+        }
         private bool CheckNettrimCode (string inputCode)
         {
             var actualNettrimCode = Configuration.GetValue<string>("InternalCodes:ActualNettrimCode");
@@ -42,6 +59,44 @@ namespace NettrimCh.Api.Domain.ServicesImplementatios.Empleado
             return _empleadoRepository.Add(empleado.toModel()).Result.toEntity();                     
         }
 
+
+        public void Update(int id, EmpleadoEntity empleadoEntity)
+        {
+            if (IsEmailDuplicate(empleadoEntity))
+            {
+                throw new Exception("Email already exist");
+            }
+
+            if (empleadoEntity.Id != id)
+            {
+                throw new Exception("Element id not equal to send object");
+            }
+
+            var result = _empleadoRepository.Update(id, empleadoEntity.toModel()).Result;
+
+            if (result == 0)
+            {
+                throw new Exception("El elemento a actualizar no existe");
+            }
+        }
+
+        public EmpleadoEntity Delete(int id)
+        {
+            var clienteToDelete = _empleadoRepository.GetById(id).Result;
+
+            if (clienteToDelete == null)
+            {
+                throw new Exception("Element to delete no exist");
+            }
+
+            var deletedCliente = _empleadoRepository.Delete(id).Result;
+            return deletedCliente.toEntity();
+        }
+
+        private bool IsEmailDuplicate(EmpleadoEntity empleado)
+        {
+            return GetSingleOrDefault(empleado.Email) != null;
+        }
         private void SetDefaultValues (EmpleadoEntity empleado)
         {
             empleado.Rol = Roles.AdminRole;
