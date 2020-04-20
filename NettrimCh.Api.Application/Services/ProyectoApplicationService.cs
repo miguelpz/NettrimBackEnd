@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using NettrimCh.Api.Application.Contracts.ServiceContracts.Proyecto;
+using NettrimCh.Api.Application.Mapping.Extension.Empleado;
+using NettrimCh.Api.Application.Mapping.Extension.Cliente;
 
 namespace NettrimCh.Api.Application.Services
 {
@@ -44,5 +46,27 @@ namespace NettrimCh.Api.Application.Services
         {
             return _proyectoDomainService.Delete(id).toDto();
         }
+
+        public IEnumerable<EmpleadoDto> GetEmpleados(int idProyecto)
+        {
+            return _proyectoDomainService.GetEmpleados(idProyecto).toDto();
+        }
+
+        public IEnumerable<EmpleadoDto> GetEmpleadosToAdd(int idProyecto)
+        {
+            return _proyectoDomainService.GetEmpleadosToAdd( idProyecto).toDto();
+        }
+
+        public ProyectoEmpleadoDto AddEmpleado(int proyectoId, int empleadoId)
+        {
+            return _proyectoDomainService.AddEmpleado(proyectoId, empleadoId).toDto();
+        }
+        public ProyectoEmpleadoDto DeleteEmpleado(int proyectoId, int empleadoId)
+        {
+            return _proyectoDomainService.DeleteEmpleado(proyectoId, empleadoId).toDto();
+        }
+
+
+
     }
 }

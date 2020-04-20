@@ -62,6 +62,13 @@ namespace NettrimCh.Api.DataAccess.Repositories.GenericRepository
             return result.Entity;
         }
 
+        public virtual async Task<T> Delete(T objToDelete)
+        {           
+            var result = _table.Remove(objToDelete);
+            await Save();
+            return result.Entity;
+        }
+
         public virtual async Task Save()
         {
             await _context.SaveChangesAsync().ConfigureAwait(false);

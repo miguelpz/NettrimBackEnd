@@ -22,7 +22,83 @@ namespace NettrimCh.Api.Controllers
         {
             _proyectoApplicationService = proyectoApplicationSerice;
         }
-        
+
+
+        [HttpGet]
+        [Route("empleados/{id}")]
+        public IActionResult GetEmpleados (int id)
+        {
+            try
+            {
+                var empleadoList = _proyectoApplicationService.GetEmpleados(id);
+                return Ok(empleadoList);
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                    ex = ex.InnerException;
+
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("empleadostoadd/{id}")]
+        public IActionResult GetEmpleadosToAdd(int id)
+        {
+            try
+            {
+                var empleadoList = _proyectoApplicationService.GetEmpleadosToAdd(id);
+                return Ok(empleadoList);
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                    ex = ex.InnerException.InnerException;
+
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("addempleado/{idproyecto}/{idempleado}")]
+        public IActionResult AddEmpleado(int idproyecto, int idempleado)
+        {
+            try
+            {
+                var proyectoEmpleadoAdded =_proyectoApplicationService.AddEmpleado(idproyecto, idempleado);
+                return Ok(proyectoEmpleadoAdded);
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                    ex = ex.InnerException.InnerException;
+
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("deleteempleado/{idproyecto}/{idempleado}")]
+        public IActionResult DeleteEmpleado(int idproyecto, int idempleado)
+        {
+            try
+            {
+                var proyectoEmpleadoDeleted = _proyectoApplicationService.DeleteEmpleado(idproyecto, idempleado);
+                return Ok(proyectoEmpleadoDeleted);
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                    ex = ex.InnerException;
+
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+
+
+
         // GET: api/Proyectos
         [HttpGet]        
         public IActionResult GetAll()

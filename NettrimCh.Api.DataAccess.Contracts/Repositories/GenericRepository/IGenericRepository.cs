@@ -14,6 +14,7 @@ namespace NettrimCh.Api.DataAccess.Contracts.Repositories.GenericRepository
         Task<T> Add(T entity);
         Task<int> Update(int id, T entity);
         Task<T> Delete(int id);
+        Task<T> Delete(T objToDelete);
         Task Save();
     }
 }

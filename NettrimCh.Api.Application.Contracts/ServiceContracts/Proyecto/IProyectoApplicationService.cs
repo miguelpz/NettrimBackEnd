@@ -10,7 +10,11 @@ namespace NettrimCh.Api.Application.Contracts.ServiceContracts.Proyecto
         IEnumerable<ProyectoDto> GetAll();
         ProyectoDto GetById(int id);
         ProyectoDto Add(ProyectoDto proyecto);
+        ProyectoEmpleadoDto AddEmpleado(int proyectoId, int empleadoId);
         void Update(int id, ProyectoDto proyecto);
         ProyectoDto Delete(int id);
+        ProyectoEmpleadoDto DeleteEmpleado(int proyectoId, int empleadoId);
+        IEnumerable<EmpleadoDto> GetEmpleados(int idProyecto);
+        IEnumerable<EmpleadoDto> GetEmpleadosToAdd(int idProyecto);
     }
 }

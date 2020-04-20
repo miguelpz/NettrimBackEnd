@@ -32,7 +32,7 @@ namespace NetrrimCh.Api.Controllers
 
 
         }
-
+        
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {

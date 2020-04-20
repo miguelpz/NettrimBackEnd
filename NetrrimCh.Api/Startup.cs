@@ -18,11 +18,13 @@ using NettrimCh.Api.CrossCutting.Encriptado;
 using NettrimCh.Api.DataAccess.Contracts.Models;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.ClienteRepository;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.EmpleadoRepository;
+using NettrimCh.Api.DataAccess.Contracts.Repositories.ProyectoEmpleadoRepository;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.ProyectoRepository;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.TareaAdjuntosRepository;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.TareaRepository;
 using NettrimCh.Api.DataAccess.Repositories.ClienteRepository;
 using NettrimCh.Api.DataAccess.Repositories.EmpleadoRepository;
+using NettrimCh.Api.DataAccess.Repositories.ProyectoEmpleadoRepository;
 using NettrimCh.Api.DataAccess.Repositories.ProyectoRepository;
 using NettrimCh.Api.DataAccess.Repositories.TareaAdjuntosRepository;
 using NettrimCh.Api.DataAccess.Repositories.TareaRepository;
@@ -90,6 +92,7 @@ namespace NetrrimCh.Api
             services.AddScoped<ITareaRepository, TareaRepository>();
             services.AddScoped<IProyectoRepository, ProyectoRepository>();
             services.AddScoped<IEmpleadoRepository, EmpleadoRepository>();
+            services.AddScoped<IProyectoEmpleadoRepository, ProyectoEmpleadoRepository>();
 
 
 

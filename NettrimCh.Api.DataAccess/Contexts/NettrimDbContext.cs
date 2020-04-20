@@ -83,7 +83,7 @@ namespace NettrimCh.Api.DataAccess.Contracts.Models
 
             modelBuilder.Entity<ProyectoEmpleado>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(o => new { o.ProyectoId, o.EmpleadoId });
 
                 entity.HasOne(d => d.Empleado)
                     .WithMany()
