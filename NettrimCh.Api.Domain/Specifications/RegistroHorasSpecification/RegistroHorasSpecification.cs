@@ -9,7 +9,7 @@ namespace NettrimCh.Api.Domain.Specifications.RegistroHorasSpecification
     {
         public bool IsSatisfiedBy(RegistroHorasEntity registroHoras)
         {
-            return (registroHoras.Horas > 0);
+            return (registroHoras.HorasTrabajadas.Length > 0);
 
         }
     }

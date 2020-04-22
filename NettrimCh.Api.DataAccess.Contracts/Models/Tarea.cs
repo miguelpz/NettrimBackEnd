@@ -7,6 +7,7 @@ namespace NettrimCh.Api.DataAccess.Contracts.Models
     {
         public Tarea()
         {
+            RegistroHoras = new HashSet<RegistroHoras>();
             TareaAdjuntos = new HashSet<TareaAdjuntos>();
         }
 
@@ -21,6 +22,7 @@ namespace NettrimCh.Api.DataAccess.Contracts.Models
         public virtual Empleado Empleado { get; set; }
         public virtual Proyecto Proyecto { get; set; }
         public virtual TipoTarea TipoTarea { get; set; }
+        public virtual ICollection<RegistroHoras> RegistroHoras { get; set; }
         public virtual ICollection<TareaAdjuntos> TareaAdjuntos { get; set; }
     }
 }

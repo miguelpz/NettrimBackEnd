@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
-namespace NettrimCh.Api.DataAccess.Contracts.Models
+namespace NettrimCh.Api.Application.Contracts.DTO
 {
-    public partial class RegistroHoras
+    public class RegistroHorasDto
     {
         public int Id { get; set; }
         public int TareaId { get; set; }
@@ -13,7 +14,5 @@ namespace NettrimCh.Api.DataAccess.Contracts.Models
         public string TiempoDescanso { get; set; }
         public string HorasTrabajadas { get; set; }
         public bool Confirmado { get; set; }
-
-        public virtual Tarea Tarea { get; set; }
     }
 }

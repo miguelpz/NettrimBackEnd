@@ -12,7 +12,9 @@ namespace NettrimCh.Api.DataAccess.Contracts.Repositories.GenericRepository
         Task<T> GetById(int id);
         Task<T> GetSingleOrDefault(Expression<Func<T, bool>> predicado);
         Task<T> Add(T entity);
+        Task Add(IEnumerable<T> obj);      
         Task<int> Update(int id, T entity);
+        Task Update(IEnumerable<int> ids, IEnumerable<T> obj);
         Task<T> Delete(int id);
         Task<T> Delete(T objToDelete);
         Task Save();

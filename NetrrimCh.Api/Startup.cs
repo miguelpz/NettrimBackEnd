@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using NettrimCh.Api.Application.Contracts.ServiceContracts.Cliente;
 using NettrimCh.Api.Application.Contracts.ServiceContracts.Empleado;
 using NettrimCh.Api.Application.Contracts.ServiceContracts.Proyecto;
+using NettrimCh.Api.Application.Contracts.ServiceContracts.ProyectoEmpleado;
 using NettrimCh.Api.Application.Contracts.ServiceContracts.Tarea;
 using NettrimCh.Api.Application.Contracts.ServiceContracts.TipoTarea;
 using NettrimCh.Api.Application.Services;
@@ -20,12 +21,14 @@ using NettrimCh.Api.DataAccess.Contracts.Repositories.ClienteRepository;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.EmpleadoRepository;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.ProyectoEmpleadoRepository;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.ProyectoRepository;
+using NettrimCh.Api.DataAccess.Contracts.Repositories.RegistroHorasRepository;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.TareaAdjuntosRepository;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.TareaRepository;
 using NettrimCh.Api.DataAccess.Repositories.ClienteRepository;
 using NettrimCh.Api.DataAccess.Repositories.EmpleadoRepository;
 using NettrimCh.Api.DataAccess.Repositories.ProyectoEmpleadoRepository;
 using NettrimCh.Api.DataAccess.Repositories.ProyectoRepository;
+using NettrimCh.Api.DataAccess.Repositories.RegistroHorasRepository;
 using NettrimCh.Api.DataAccess.Repositories.TareaAdjuntosRepository;
 using NettrimCh.Api.DataAccess.Repositories.TareaRepository;
 using NettrimCh.Api.DataAccess.Repositories.TipoTareaRepository;
@@ -42,6 +45,7 @@ using NettrimCh.Api.Domain.ServicesContracts.TareaAdjuntos;
 using NettrimCh.Api.Domain.ServicesContracts.TipoTarea;
 using NettrimCh.Api.Domain.ServicesImplementatios.Comon;
 using NettrimCh.Api.Domain.ServicesImplementatios.Empleado;
+using NettrimCh.Api.Domain.ServicesImplementatios.RegistroHoras;
 using NettrimCh.Api.Domain.ServicesImplementatios.TareaAdjuntos;
 using NettrimCh.Api.Domain.ServicesImplementatios.TipoTarea;
 using NettrimCh.Api.Domain.Specifications.ClienteSpecification;
@@ -93,10 +97,8 @@ namespace NetrrimCh.Api
             services.AddScoped<IProyectoRepository, ProyectoRepository>();
             services.AddScoped<IEmpleadoRepository, EmpleadoRepository>();
             services.AddScoped<IProyectoEmpleadoRepository, ProyectoEmpleadoRepository>();
-
-
-
-
+            services.AddScoped<IRegistroHorasRepository, RegistroHorasRepository>();
+           
 
             //Factorias
             //services.AddScoped<IClienteFactory, ClienteFactory>();
@@ -121,6 +123,9 @@ namespace NetrrimCh.Api
 
             services.AddScoped<IProyectoApplicationService, ProyectoApplicationService>();
             services.AddScoped<IProyectoDomainService, ProyectoDomainService>();
+
+            services.AddScoped<IRegistroHorasApplicationService, RegistroHorasApplicationService>();
+            services.AddScoped<IRegistroHorasDomainService, RegistroHorasDomainService>();
 
 
 
