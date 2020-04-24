@@ -9,6 +9,7 @@ namespace NettrimCh.Api.DataAccess.Contracts.Models
         {
             ProyectoEmpleado = new HashSet<ProyectoEmpleado>();
             Tarea = new HashSet<Tarea>();
+            EmpleadoSetting = new HashSet<EmpleadoSetting>();
         }
 
         public int Id { get; set; }
@@ -20,6 +21,8 @@ namespace NettrimCh.Api.DataAccess.Contracts.Models
         public bool Baja { get; set; }
         public string Rol { get; set; }
 
+
+        public virtual ICollection<EmpleadoSetting> EmpleadoSetting { get; set; }
         public virtual ICollection<ProyectoEmpleado> ProyectoEmpleado { get; set; }
         public virtual ICollection<Tarea> Tarea { get; set; }
     }

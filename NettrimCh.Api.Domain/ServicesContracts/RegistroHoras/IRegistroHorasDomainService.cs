@@ -3,6 +3,7 @@ using NettrimCh.Api.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace NettrimCh.Api.Domain.ServicesImplementatios.RegistroHoras
 {
@@ -10,5 +11,9 @@ namespace NettrimCh.Api.Domain.ServicesImplementatios.RegistroHoras
     {
         IEnumerable<RegistroHorasEntity> GetMonthInputs(int tareaId, int month, int year);
         void UpdateMonthInputs(IEnumerable<int> ids, IEnumerable<RegistroHorasEntity> registroHoras);
+        bool IsDafaultSetting(int tareaId);
+        EmpleadoSettingEntity SetDefaultSetting(int tareaId, EmpleadoSettingEntity empleadoSettin);
+        void UpdateDefaultSetting(EmpleadoSettingEntity empleadoSetting);
+        Task<int> GetEmpleado(int tareaId);
     }
 }

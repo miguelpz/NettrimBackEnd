@@ -1,5 +1,6 @@
 ﻿using NettrimCh.Api.Application.Contracts.DTO;
 using NettrimCh.Api.Application.Contracts.ServiceContracts.ProyectoEmpleado;
+using NettrimCh.Api.Application.Mapping.Extension.Cliente;
 using NettrimCh.Api.Application.Mapping.Extension.RegistroHoras;
 using NettrimCh.Api.Domain.ServicesImplementatios.RegistroHoras;
 using System;
@@ -23,11 +24,30 @@ namespace NettrimCh.Api.Application.Services
             return _registroHorasDomainService.GetMonthInputs(tareaId, month, year).toDto();
         }
 
+        public bool IsDafaultSetting(int tareaId)
+        {
+            return _registroHorasDomainService.IsDafaultSetting(tareaId);
+        }
+
+        public EmpleadoSettingsDto SetDefaultSetting(int tareaId, EmpleadoSettingsDto empleadoSetting)
+        {
+            return _registroHorasDomainService.SetDefaultSetting(tareaId, empleadoSetting.toEntity()).toDto();
+        }
+
+        public void UpdateDefaultSetting(EmpleadoSettingsDto empleadoSetting)
+        {
+            _registroHorasDomainService.UpdateDefaultSetting(empleadoSetting.toEntity());
+        }
+
         public void UpdateMonthInputs(IEnumerable<int> ids, IEnumerable<RegistroHorasDto> registroHoras)
         {
             _registroHorasDomainService.UpdateMonthInputs(ids, registroHoras.toEntity());
 
         }
 
+        public int GetEmpleado(int tareaId)
+        {
+           return _registroHorasDomainService.GetEmpleado(tareaId).Result;
+        }
     }
 }
