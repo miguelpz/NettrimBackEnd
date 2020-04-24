@@ -58,5 +58,59 @@ namespace NettrimCh.Api.Controllers
             }
         }
 
+        //Default Setting
+
+        [HttpPost("defaultSetting/{tareaId}")]
+        public IActionResult Post(int tareaId, [FromBody] EmpleadoSettingDto empleadoSetting)
+        {
+            try
+            {
+                var result = _registroHorasApplicationSerice.SetDefaultSetting(tareaId, empleadoSetting);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                    ex = ex.InnerException;
+
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+
+        [HttpGet("defaultSetting/{tareaId}")]
+        public IActionResult IsDafaultSetting(int tareaId)
+        {
+            try
+            {
+                var result = _registroHorasApplicationSerice.IsDafaultSetting(tareaId);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                    ex = ex.InnerException;
+
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpPut("defaultSetting/")]
+        public IActionResult UpdateDafaultSetting([FromBody] EmpleadoSettingDto empleadoSetting)
+        {
+            try
+            {
+                _registroHorasApplicationSerice.UpdateDefaultSetting(empleadoSetting);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                    ex = ex.InnerException;
+
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
     }
 }

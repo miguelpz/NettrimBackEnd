@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
-namespace NettrimCh.Api.DataAccess.Contracts.Models
+namespace NettrimCh.Api.Domain.Entities
 {
-    public partial class EmpleadoSetting
+    public class EmpleadoSettingEntity
     {
         public int Id { get; set; }
         public int EmpleadoId { get; set; }
         public string HoraEntradaDefault { get; set; }
         public string HoraSalidaDefault { get; set; }
         public string TiempoDescansoDefault { get; set; }
-
-        public virtual Empleado Empleado { get; set; }
     }
 }

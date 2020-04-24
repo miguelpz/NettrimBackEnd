@@ -10,5 +10,8 @@ namespace NettrimCh.Api.Domain.ServicesImplementatios.RegistroHoras
     {
         IEnumerable<RegistroHorasEntity> GetMonthInputs(int tareaId, int month, int year);
         void UpdateMonthInputs(IEnumerable<int> ids, IEnumerable<RegistroHorasEntity> registroHoras);
+        bool IsDafaultSetting(int tareaId);
+        EmpleadoSettingEntity SetDefaultSetting(int tareaId, EmpleadoSettingEntity empleadoSettin);
+        void UpdateDefaultSetting(EmpleadoSettingEntity empleadoSetting);
     }
 }
