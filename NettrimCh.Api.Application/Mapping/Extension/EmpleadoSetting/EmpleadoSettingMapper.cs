@@ -20,19 +20,19 @@ namespace  NettrimCh.Api.Application.Mapping.Extension.Cliente
                 .CreateMapper();
         }
 
-        public static IEnumerable<Dtos.EmpleadoSettingDto> toDto(this IEnumerable<Entities.EmpleadoSettingEntity> entity)
+        public static IEnumerable<Dtos.EmpleadoSettingsDto> toDto(this IEnumerable<Entities.EmpleadoSettingEntity> entity)
         {
-            return entity == null ? null : Mapper.Map<IEnumerable<Entities.EmpleadoSettingEntity>,IEnumerable<Dtos.EmpleadoSettingDto>>(entity);          
+            return entity == null ? null : Mapper.Map<IEnumerable<Entities.EmpleadoSettingEntity>,IEnumerable<Dtos.EmpleadoSettingsDto>>(entity);          
         }
 
-        public static Dtos.EmpleadoSettingDto toDto(this Entities.EmpleadoSettingEntity entity)
+        public static Dtos.EmpleadoSettingsDto toDto(this Entities.EmpleadoSettingEntity entity)
         {
-            return entity == null ? null : Mapper.Map<Entities.EmpleadoSettingEntity, Dtos.EmpleadoSettingDto>(entity);
+            return entity == null ? null : Mapper.Map<Entities.EmpleadoSettingEntity, Dtos.EmpleadoSettingsDto>(entity);
         }
 
-        public static Entities.EmpleadoSettingEntity toEntity(this Dtos.EmpleadoSettingDto dto)
+        public static Entities.EmpleadoSettingEntity toEntity(this Dtos.EmpleadoSettingsDto dto)
         {
-            return dto == null ? null : Mapper.Map<Dtos.EmpleadoSettingDto, Entities.EmpleadoSettingEntity>(dto);
+            return dto == null ? null : Mapper.Map<Dtos.EmpleadoSettingsDto, Entities.EmpleadoSettingEntity>(dto);
         }
     }
 }

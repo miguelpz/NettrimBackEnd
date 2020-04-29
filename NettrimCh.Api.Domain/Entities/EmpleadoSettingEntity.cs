@@ -8,8 +8,8 @@ namespace NettrimCh.Api.Domain.Entities
     {
         public int Id { get; set; }
         public int EmpleadoId { get; set; }
-        public string HoraEntradaDefault { get; set; }
-        public string HoraSalidaDefault { get; set; }
-        public string TiempoDescansoDefault { get; set; }
+        public TimeSpan HoraEntradaDefault { get; set; }
+        public TimeSpan HoraSalidaDefault { get; set; }
+        public TimeSpan TiempoDescansoDefault { get; set; }
     }
 }

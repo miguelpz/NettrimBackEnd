@@ -34,7 +34,7 @@ namespace NettrimCh.Api.Domain.ServicesImplementatios.RegistroHoras
 
         public IEnumerable<RegistroHorasEntity> GetMonthInputs (int tareaId, int month, int year)
         {                                               
-            var previousRegisters = _registroHorasRepository.GetAll().Result.Where(o => o.TareaId == tareaId && o.DiaRegistro.Month == month && o.DiaRegistro.Year == year);
+            var previousRegisters = _registroHorasRepository.GetAll().Result.Where(o => o.TareaId == tareaId && o.DiaRegistro.Month == month && o.DiaRegistro.Year == year).OrderBy(x => x.DiaRegistro);
 
             if (previousRegisters.Count() == 0) {
 
@@ -42,20 +42,20 @@ namespace NettrimCh.Api.Domain.ServicesImplementatios.RegistroHoras
                 if (defaultSetting == null)
                     throw new Exception("Debería haber default setting para este empleado");
 
-                var firsTDayMonth = new DateTime(year, month, 1);
+                var firsTDayMonth = new DateTime(year, month , 1);
                 var lastDayMonth = firsTDayMonth.AddMonths(1).AddDays(-1);
 
                 var registroHorasList = new List<RegistroHorasEntity>();
 
-                for (int x = 1; x < lastDayMonth.Day; x++)
+                for (int x = 1; x <= lastDayMonth.Day; x++)
                 {
                     registroHorasList.Add(new RegistroHorasEntity()
                     {
                         TareaId = tareaId,
                         DiaRegistro = firsTDayMonth.AddDays(x - 1),
-                        HoraEntrada = defaultSetting.HoraEntradaDefault,
-                        HoraSalida = defaultSetting.HoraSalidaDefault,
-                        TiempoDescanso = defaultSetting.TiempoDescansoDefault,
+                        HoraEntrada = defaultSetting.HoraEntradaDefault.ToString(),
+                        HoraSalida = defaultSetting.HoraSalidaDefault.ToString(),
+                        TiempoDescanso = defaultSetting.TiempoDescansoDefault.ToString(),
                         Confirmado = false,
                         HorasTrabajadas = (new TimeSpan(12, 30, 00) - new TimeSpan(11, 30, 00) - new TimeSpan(00, 30, 00)).ToString()
                     });                 
@@ -71,7 +71,8 @@ namespace NettrimCh.Api.Domain.ServicesImplementatios.RegistroHoras
 
         public void UpdateMonthInputs(IEnumerable<int> ids, IEnumerable<RegistroHorasEntity> registroHoras) 
         {
-            var previousRegisters = _registroHorasRepository.GetAll().Result.Where(o => o.DiaRegistro == registroHoras.FirstOrDefault().DiaRegistro).Count(); 
+            var previousRegisters = _registroHorasRepository.GetAll().Result.Where(o => o.DiaRegistro == registroHoras.FirstOrDefault().DiaRegistro &&
+                                                                                        o.TareaId == registroHoras.FirstOrDefault().TareaId).Count(); 
             
             if (previousRegisters == 0)
             {
@@ -114,7 +115,7 @@ namespace NettrimCh.Api.Domain.ServicesImplementatios.RegistroHoras
         {
             var result = _empleadoSettingRepository.Update(empleadoSetting.Id, empleadoSetting.toModel()).Result;
         }
-        private async Task<int> GetEmpleado (int tareaId)           
+        public async Task<int> GetEmpleado (int tareaId)           
         {
             var result = await _tareaRepository.GetById(tareaId);
             return result != null ? result.EmpleadoId.Value : 0;

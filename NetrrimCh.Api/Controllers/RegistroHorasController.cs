@@ -61,7 +61,7 @@ namespace NettrimCh.Api.Controllers
         //Default Setting
 
         [HttpPost("defaultSetting/{tareaId}")]
-        public IActionResult Post(int tareaId, [FromBody] EmpleadoSettingDto empleadoSetting)
+        public IActionResult Post(int tareaId, [FromBody] EmpleadoSettingsDto empleadoSetting)
         {
             try
             {
@@ -96,12 +96,29 @@ namespace NettrimCh.Api.Controllers
         }
 
         [HttpPut("defaultSetting/")]
-        public IActionResult UpdateDafaultSetting([FromBody] EmpleadoSettingDto empleadoSetting)
+        public IActionResult UpdateDafaultSetting([FromBody] EmpleadoSettingsDto empleadoSetting)
         {
             try
             {
                 _registroHorasApplicationSerice.UpdateDefaultSetting(empleadoSetting);
                 return Ok();
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                    ex = ex.InnerException;
+
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpGet("defaultSetting/empleado/{empleadoId}")]
+        public IActionResult GetEmpleado(int empleadoId)
+        {
+            try
+            {
+                var result = _registroHorasApplicationSerice.GetEmpleado(empleadoId);
+                return Ok(result);
             }
             catch (Exception ex)
             {

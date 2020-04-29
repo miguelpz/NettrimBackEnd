@@ -29,12 +29,12 @@ namespace NettrimCh.Api.Application.Services
             return _registroHorasDomainService.IsDafaultSetting(tareaId);
         }
 
-        public EmpleadoSettingDto SetDefaultSetting(int tareaId, EmpleadoSettingDto empleadoSetting)
+        public EmpleadoSettingsDto SetDefaultSetting(int tareaId, EmpleadoSettingsDto empleadoSetting)
         {
             return _registroHorasDomainService.SetDefaultSetting(tareaId, empleadoSetting.toEntity()).toDto();
         }
 
-        public void UpdateDefaultSetting(EmpleadoSettingDto empleadoSetting)
+        public void UpdateDefaultSetting(EmpleadoSettingsDto empleadoSetting)
         {
             _registroHorasDomainService.UpdateDefaultSetting(empleadoSetting.toEntity());
         }
@@ -45,5 +45,9 @@ namespace NettrimCh.Api.Application.Services
 
         }
 
+        public int GetEmpleado(int tareaId)
+        {
+           return _registroHorasDomainService.GetEmpleado(tareaId).Result;
+        }
     }
 }

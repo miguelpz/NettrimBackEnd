@@ -3,6 +3,7 @@ using NettrimCh.Api.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace NettrimCh.Api.Domain.ServicesImplementatios.RegistroHoras
 {
@@ -13,5 +14,6 @@ namespace NettrimCh.Api.Domain.ServicesImplementatios.RegistroHoras
         bool IsDafaultSetting(int tareaId);
         EmpleadoSettingEntity SetDefaultSetting(int tareaId, EmpleadoSettingEntity empleadoSettin);
         void UpdateDefaultSetting(EmpleadoSettingEntity empleadoSetting);
+        Task<int> GetEmpleado(int tareaId);
     }
 }
