@@ -5,12 +5,10 @@ namespace NettrimCh.Api.DataAccess.Contracts.Models
 {
     public partial class EmpleadoSetting
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public int EmpleadoId { get; set; }
-        public string HoraEntradaDefault { get; set; }
-        public string HoraSalidaDefault { get; set; }
-        public string TiempoDescansoDefault { get; set; }
-
-        public virtual Empleado Empleado { get; set; }
+        public TimeSpan HoraEntradaDefault { get; set; }
+        public TimeSpan HoraSalidaDefault { get; set; }
+        public TimeSpan TiempoDescansoDefault { get; set; }
     }
 }

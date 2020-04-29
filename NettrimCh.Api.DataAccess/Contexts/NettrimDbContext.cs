@@ -25,6 +25,14 @@ namespace NettrimCh.Api.DataAccess.Contracts.Models
         public virtual DbSet<TareaAdjuntos> TareaAdjuntos { get; set; }
         public virtual DbSet<TipoTarea> TipoTarea { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-8RU60JJ\\SQLEXPRESS;Initial Catalog=NettrimDb;Persist Security Info=True;User=sa;Password=Arlesico;");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -63,14 +71,12 @@ namespace NettrimCh.Api.DataAccess.Contracts.Models
 
             modelBuilder.Entity<EmpleadoSetting>(entity =>
             {
-                entity.Property(e => e.HoraEntradaDefault).HasMaxLength(15);
-                entity.Property(e => e.HoraSalidaDefault).HasMaxLength(15);
-                entity.Property(e => e.TiempoDescansoDefault).HasMaxLength(15);
+                entity.HasNoKey();
 
-                entity.HasOne(d => d.Empleado)
-                   .WithMany(p => p.EmpleadoSetting)
-                   .HasForeignKey(d => d.EmpleadoId)
-                   .HasConstraintName("FK_EmpleadoSetting_Empleado");
+                entity.Property(e => e.Id)
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .IsFixedLength();
             });
 
             modelBuilder.Entity<Proyecto>(entity =>
