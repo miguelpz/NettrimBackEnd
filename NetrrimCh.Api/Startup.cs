@@ -19,6 +19,7 @@ using NettrimCh.Api.CrossCutting.Encriptado;
 using NettrimCh.Api.DataAccess.Contracts.Models;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.ClienteRepository;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.EmpleadoRepository;
+using NettrimCh.Api.DataAccess.Contracts.Repositories.EmpleadoSettingRepository;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.ProyectoEmpleadoRepository;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.ProyectoRepository;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.RegistroHorasRepository;
@@ -26,6 +27,7 @@ using NettrimCh.Api.DataAccess.Contracts.Repositories.TareaAdjuntosRepository;
 using NettrimCh.Api.DataAccess.Contracts.Repositories.TareaRepository;
 using NettrimCh.Api.DataAccess.Repositories.ClienteRepository;
 using NettrimCh.Api.DataAccess.Repositories.EmpleadoRepository;
+using NettrimCh.Api.DataAccess.Repositories.EmpleadoSettingRepository;
 using NettrimCh.Api.DataAccess.Repositories.ProyectoEmpleadoRepository;
 using NettrimCh.Api.DataAccess.Repositories.ProyectoRepository;
 using NettrimCh.Api.DataAccess.Repositories.RegistroHorasRepository;
@@ -98,6 +100,7 @@ namespace NetrrimCh.Api
             services.AddScoped<IEmpleadoRepository, EmpleadoRepository>();
             services.AddScoped<IProyectoEmpleadoRepository, ProyectoEmpleadoRepository>();
             services.AddScoped<IRegistroHorasRepository, RegistroHorasRepository>();
+            services.AddScoped<IEmpleadoSettingRepository, EmpleadoSettingRepository>();
            
 
             //Factorias
