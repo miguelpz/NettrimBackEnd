@@ -145,10 +145,7 @@ namespace NettrimCh.Api.DataAccess.Contracts.Models
 
                 entity.Property(e => e.FechaInicio).HasColumnType("date");
 
-                entity.HasOne(d => d.Empleado)
-                    .WithMany(p => p.Tarea)
-                    .HasForeignKey(d => d.EmpleadoId)
-                    .HasConstraintName("FK_Tarea_Empleado");
+               
 
                 entity.HasOne(d => d.Proyecto)
                     .WithMany(p => p.Tarea)
